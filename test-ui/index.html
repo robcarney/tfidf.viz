@@ -19,8 +19,14 @@
                 <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
             </ul>
             <div id="test-swipe-1" class="col s12">
-                <input type="text"/>
-                <textarea class="tv-doc-text materialize-textarea" rows="4" cols="20"></textarea>
+                <div class="input-field col s12">
+                    <input type="text" placeholder="Title"/>
+                    <span class="helper-text" data-error="wrong" data-success="right">Title of the document</span>
+                </div>
+                <div class="input-field col s12">
+                    <textarea class="tv-doc-text materialize-textarea" rows="4" cols="20" placeholder="Content"></textarea>
+                    <span class="helper-text" data-error="wrong" data-success="right">Content of the document</span>
+                </div>
             </div>
             <div id="test-swipe-2" class="col s12">Test 2</div>
             <div id="test-swipe-3" class="col s12">Test 3</div>
