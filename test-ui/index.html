@@ -8,19 +8,22 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 </head>
 <body>
-    <nav class="nav bg-primary">
-        <h1>tfidf.viz</h1>
+    <nav class="nav tv-bg-primary">
+        <h1 class="tv-brand">tfidf.viz</h1>
     </nav>
-    <div class="main">
-        <div class = "box">
+    <div class="tv-main">
+        <div class = "tv-docs">
             <ul id="tabs-swipe-demo" class="tabs">
-                <li class="tab col s3"><a href="#test-swipe-1">Test 1</a></li>
-                <li class="tab col s3"><a class="active" href="#test-swipe-2">Test 2</a></li>
+                <li class="tab col s3"><a class="active" href="#test-swipe-1">Test 1</a></li>
+                <li class="tab col s3"><a href="#test-swipe-2">Test 2</a></li>
                 <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
             </ul>
-            <div id="test-swipe-1" class="col s12 blue">Test 1</div>
-            <div id="test-swipe-2" class="col s12 red">Test 2</div>
-            <div id="test-swipe-3" class="col s12 green">Test 3</div>
+            <div id="test-swipe-1" class="col s12">
+                <textarea class="tv-doc-text" rows="4" cols="20"></textarea>
+            </div>
+            <div id="test-swipe-2" class="col s12">Test 2</div>
+            <div id="test-swipe-3" class="col s12">Test 3</div>
+            <button class="btn tv-submit-btn">Submit</button>
         </div>
     </div>
 

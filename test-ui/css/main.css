@@ -10,14 +10,36 @@
         overflow-x: hidden;
         padding-top: 20px;
     }
-    .main {
+
+    .tv-main {
         margin-left: 300px; /* Same as the width of the sidenav */
         font-size: 28px; /* Increased text to enable scrolling */
         padding: 0px 10px;
     }
+
+    .tv-brand  {
+        padding-left: 2rem;
+    }
+
+    .tv-docs  {
+        margin-top: 2rem;
+        margin-left: 2rem;
+        width: 75%;
+    }
+
+    .tv-doc-text  {
+        border: 1px solid #888;
+        margin: 0.5rem;
+        padding: 0.3rem;
+        height: 12rem;
+        font-size: 80%;
+        border-radius: .5rem;
+    }
 }
 
-.bg-primary  {
+.tv-bg-primary  {
     background-color: #3399ff;
 }
+
+
 
