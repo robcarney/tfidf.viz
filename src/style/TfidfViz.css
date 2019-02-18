@@ -1,10 +1,31 @@
 .sidebar {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
     background: #7386D5;
     color: #fff;
 }
+
+html,body {
+    height:100%;
+}
+/*
+.container-fluid {
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs
+    box-sizing: border-box;
+}
+
+.row {
+    height: 100%;
+    display: table-row;
+}
+
+.row .no-float {
+    display: table-cell;
+    float: none;
+}
+*/
+
+
+
+

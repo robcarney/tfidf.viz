@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './style/index.css';
+
 import TfidfViz from './components/TfidfViz';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<TfidfViz />, document.getElementById('root'));
