@@ -28,6 +28,10 @@
     }
 }
 
+.tv-doc-input-template  {
+    display: none;
+}
+
 .tv-bg-primary  {
     background-color: #3399ff;
 }

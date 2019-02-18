@@ -15,9 +15,19 @@
         <div class = "tv-docs">
             <ul id="tabs-swipe-demo" class="tabs">
                 <li class="tab col s3 1"><a class="tab-link active" href="#1">Test 1</a></li>
-                <li class="tab col s3"><a href="#test-swipe-2">Test 2</a></li>
-                <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
+                <li class="tab col s3 2"><a class="tab-link active" href="#2">Test 2</a></li>
+                <li class="tab col s3"><a class="tab-link">New Document</a></li>
             </ul>
+            <div class="tv-doc-input tv-doc-input-template col s12">
+                <div class="input-field col s12">
+                    <input class="tv-doc-title-input" type="text" placeholder="Title"/>
+                    <span class="helper-text" data-error="wrong" data-success="right">Title of the document</span>
+                </div>
+                <div class="input-field col s12">
+                    <textarea class="tv-doc-text materialize-textarea" rows="4" cols="20" placeholder="Content"></textarea>
+                    <span class="helper-text" data-error="wrong" data-success="right">Content of the document</span>
+                </div>
+            </div>
             <div id="1" class="tv-doc-input col s12">
                 <div class="input-field col s12">
                     <input class="tv-doc-title-input" type="text" placeholder="Title"/>
@@ -28,8 +38,9 @@
                     <span class="helper-text" data-error="wrong" data-success="right">Content of the document</span>
                 </div>
             </div>
-            <div id="test-swipe-2" class="col s12">Test 2</div>
-            <div id="test-swipe-3" class="col s12">Test 3</div>
+            <div id="2" class="tv-doc-result col s12">
+                    <p class="tv-doc-result-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula tellus vitae odio laoreet sollicitudin.</p>
+                </div>
             <button class="btn tv-submit-btn">Submit</button>
         </div>
     </div>
