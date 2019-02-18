@@ -37,7 +37,7 @@ class TfidfViz extends Component  {
                             <h1>Tfidf.Viz</h1>
                         </div>
                     </div>
-                    <div id="col-6 no-float h-100">
+                    <div id="col-6 no-float h-100 ml-2 mt-2">
                         {docEditors}
                     </div>
                 </div>

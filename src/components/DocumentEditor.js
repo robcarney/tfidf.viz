@@ -23,7 +23,7 @@ class DocumentEditor extends Component  {
 
     render()  {
         return(
-            <div className="doc-editor">
+            <div className="doc-editor ml-4 mt-4">
                 <form>
                     <div className="form-group">
                         <textarea className="form-control"
