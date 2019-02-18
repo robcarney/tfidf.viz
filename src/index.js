@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style/index.css';
 import TfidfViz from './components/TfidfViz';
 import * as serviceWorker from './serviceWorker';
 

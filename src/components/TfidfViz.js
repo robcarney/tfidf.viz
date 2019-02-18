@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+import '../style/TfidfViz.css';
 
 class TfidfViz extends Component  {
     constructor(props)  {
@@ -9,7 +9,13 @@ class TfidfViz extends Component  {
 
     render()  {
         return (
-            <h1>Tfidf.Viz</h1>
+            <div>
+                <nav className="sidebar">
+                    <div className="sidebar-header">
+                        <h1>Tfidf.Viz</h1>
+                    </div>
+                </nav>
+            </div>
         );
     }
 
