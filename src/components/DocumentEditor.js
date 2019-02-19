@@ -1,42 +1,26 @@
 import React, {Component} from 'react';
 
 
-class DocumentEditor extends Component  {
-    constructor(props)  {
-        super(props);
-
-        this.contentChanged = this.contentChanged.bind(this);
-
-        this.state = {
-            index: this.props.index,
-            content: this.props.content
-        }
-    }
-
-    contentChanged(e)  {
-        this.setState({
-            index: this.state.index,
-            content: e.target.value
-        });
-        this.props.onContentChange(this.state.index, this.state.content)
-    }
-
-    render()  {
-        return(
-            <div className="doc-editor ml-4 mt-4">
-                <form>
-                    <div className="form-group">
-                        <textarea className="form-control"
-                            value={this.state.content}
-                            onChange={this.contentChanged}>
-                        </textarea>
-                    </div>
-                </form>
+const DocumentEditor = ({index, content, onDelete, onEdit}) =>
+    <div className="doc-editor container-fluid w-100">
+        <div className="row">
+            <div className="col-9"><h3>{"Document #" + (index + 1)}</h3></div>
+            <div className="col-3">
+                <button className="btn btn-danger"
+                        onClick={() => onDelete(index)}>Delete</button>
             </div>
-        )
-    }
-
-}
+        </div>
+        <div className="row">
+            <form className="w-100">
+                <div className="form-group">
+                            <textarea className="form-control"
+                                      value={content}
+                                      onChange={(e) => onEdit(index, e.target.value)}>
+                            </textarea>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 export default DocumentEditor;
