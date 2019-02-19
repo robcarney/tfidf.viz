@@ -12,19 +12,22 @@ class TfidfViz extends Component  {
         this.newEditDocument = this.newEditDocument.bind(this);
         this.deleteDocument = this.deleteDocument.bind(this);
 
+        this.runTfidf = this.runTfidf.bind(this);
+
         this.renderEdit = this.renderEdit.bind(this);
 
         this.state = {
             docs: [
-                "Some content"
+                {content: "Some content"}
             ],
             isEdit: true
         }
+
     }
 
     newEditDocument()  {
         let newDocs = this.state.docs;
-        newDocs.push("");
+        newDocs.push({content: ""});
         this.setState({
             docs: newDocs,
             isEdit: this.state.isEdit
@@ -43,11 +46,70 @@ class TfidfViz extends Component  {
 
     changeContent(index, newContent)  {
         let newDocs = this.state.docs;
-        newDocs[index] = newContent;
+        newDocs[index] = { content: newContent };
         this.setState({
             docs: newDocs,
             isEdit: this.state.isEdit
         });
+    }
+
+    runTfidf()  {
+        let newDocs = [{
+                content: "Boston is a cool city.",
+                wordScores: [{
+                    name: "Boston",
+                    score: 0.123
+                },{
+                    name: "is",
+                    score: 0.199
+                },{
+                    name: "a",
+                    score: 0.423
+                },{
+                    name: "cool",
+                    score: 0.223
+                },{
+                    name: "city",
+                    score: 0.923
+                }]
+            },{
+            content: "I like the city.",
+            wordScores: [{
+                name: "I",
+                score: 0.123
+            },{
+                name: "like",
+                score: 0.199
+            },{
+                name: "the",
+                score: 0.423
+            },{
+                name: "city",
+                score: 0.923
+            }]
+        },{
+            content: "New York is a city.",
+            wordScores: [{
+                name: "New",
+                score: 0.123
+            },{
+                name: "York",
+                score: 0.223
+            },{
+                name: "is",
+                score: 0.199
+            },{
+                name: "a",
+                score: 0.423
+            },{
+                name: "city",
+                score: 0.923
+            }]
+        }];
+        this.setState({
+            docs: newDocs,
+            isEdit: false
+        })
     }
 
     renderEdit()  {
