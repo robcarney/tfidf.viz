@@ -20,10 +20,28 @@ class DocumentResult extends Component  {
         return <h1>Content</h1>
     }
 
+    getBackgroundColorStyleObject(scale)  {
+        return {
+            backgroundColor: '#100000'
+        }
+    }
 
 
     render()  {
-        return this.getContent();
+        return (
+            <div>
+                <span style={this.getBackgroundColorStyleObject(0.1)}>Boston</span>
+                <span> </span>
+                <span style={this.getBackgroundColorStyleObject(0.1)}>is</span>
+                <span> </span>
+                <span style={this.getBackgroundColorStyleObject(0.1)}>a</span>
+                <span> </span>
+                <span style={this.getBackgroundColorStyleObject(0.1)}>cool</span>
+                <span> </span>
+                <span style={this.getBackgroundColorStyleObject(0.1)}>city</span>
+                <span>.</span>
+            </div>
+        )
     }
 
 

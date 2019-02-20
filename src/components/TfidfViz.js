@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import DocumentEditor from './DocumentEditor'
+import DocumentResult from './DocumentResult'
 
 import '../style/TfidfViz.css';
 
@@ -118,6 +119,33 @@ class TfidfViz extends Component  {
                             index={key}
                             onDelete={this.deleteDocument}
                             onEdit={this.changeContent}/>
+        );
+        return (
+            <div className="container-fluid h-100">
+                <div className="row main-row h-100">
+                    <div className="col-3 sidebar no-float h-100">
+                        <div className="">
+                            <h1>Tfidf.Viz</h1>
+                        </div>
+                    </div>
+                    <div className="col-9 h-100">
+                        <button type="button"
+                                className="btn btn-primary m-2">
+                            Run TF-IDF
+                        </button>
+                        {docEditors}
+                        <button type="button"
+                                onClick={this.newEditDocument}
+                                className="btn btn-block btn-success">New</button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    renderResult()  {
+        let docEditors = this.state.docs.map((doc, key) =>
+            <DocumentResult/>
         );
         return (
             <div className="container-fluid h-100">
