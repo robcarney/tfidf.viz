@@ -57,7 +57,17 @@ class DocumentResult extends Component  {
                 }
             }
         }
-        console.log(contentList);
+        return contentList.map(contentEntry => {
+            if (contentEntry.isSplitter)  {
+                return (
+                    <span>{contentEntry.word}</span>
+                )
+            } else {
+                return (
+                    <span style={this.getBackgroundColorStyleObject(contentEntry.value)}>{contentEntry.word}</span>
+                )
+            }
+        });
     }
 
     getBackgroundColorStyleObject(scale)  {
@@ -68,7 +78,13 @@ class DocumentResult extends Component  {
 
 
     render()  {
-        this.getContent();
+        let content = this.getContent();
+        return (
+            <div className="document-result">
+                {content}
+            </div>
+        )
+        /*
         return (
             <div className="document-result">
                 <span style={this.getBackgroundColorStyleObject(0.1)}>Boston</span>
@@ -82,7 +98,7 @@ class DocumentResult extends Component  {
                 <span style={this.getBackgroundColorStyleObject(0.1)}>city</span>
                 <span>.</span>
             </div>
-        )
+        )*/
     }
 }
 
