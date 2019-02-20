@@ -155,7 +155,7 @@ class TfidfViz extends Component  {
 
     renderResult()  {
         let docEditors = this.state.docs.map((doc, key) =>
-            <DocumentResult document={doc}/>
+            <DocumentResult document={doc} index={key}/>
         );
         return (
             <div className="container-fluid h-100">
@@ -172,9 +172,6 @@ class TfidfViz extends Component  {
                             Edit
                         </button>
                         {docEditors}
-                        <button type="button"
-                                onClick={this.newEditDocument}
-                                className="btn btn-block btn-success">New</button>
                     </div>
                 </div>
             </div>

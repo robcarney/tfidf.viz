@@ -81,24 +81,12 @@ class DocumentResult extends Component  {
         let content = this.getContent();
         return (
             <div className="document-result">
-                {content}
+                <h3>{"Document #" + (this.props.index + 1)}</h3>
+                <div className="document-result-content">
+                    {content}
+                </div>
             </div>
         )
-        /*
-        return (
-            <div className="document-result">
-                <span style={this.getBackgroundColorStyleObject(0.1)}>Boston</span>
-                <span> </span>
-                <span style={this.getBackgroundColorStyleObject(0.1)}>is</span>
-                <span> </span>
-                <span style={this.getBackgroundColorStyleObject(0.1)}>a</span>
-                <span>, </span>
-                <span style={this.getBackgroundColorStyleObject(0.1)}>cool</span>
-                <span> </span>
-                <span style={this.getBackgroundColorStyleObject(0.1)}>city</span>
-                <span>.</span>
-            </div>
-        )*/
     }
 }
 
