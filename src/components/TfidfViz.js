@@ -14,6 +14,7 @@ class TfidfViz extends Component  {
         this.deleteDocument = this.deleteDocument.bind(this);
 
         this.runTfidf = this.runTfidf.bind(this);
+        this.returnToEditMode = this.returnToEditMode.bind(this);
 
         this.renderEdit = this.renderEdit.bind(this);
 
@@ -110,12 +111,20 @@ class TfidfViz extends Component  {
         this.setState({
             docs: newDocs,
             isEdit: false
-        })
+        });
+    }
+
+    returnToEditMode()  {
+        console.log("RETURNING TO EDIT MODE");
+        this.setState({
+            docs: this.state.docs,
+            isEdit: true
+        });
     }
 
     renderEdit()  {
         let docEditors = this.state.docs.map((doc, key) =>
-            <DocumentEditor content={doc}
+            <DocumentEditor content={doc.content}
                             index={key}
                             onDelete={this.deleteDocument}
                             onEdit={this.changeContent}/>
@@ -130,6 +139,7 @@ class TfidfViz extends Component  {
                     </div>
                     <div className="col-9 h-100">
                         <button type="button"
+                                onClick={this.runTfidf}
                                 className="btn btn-primary m-2">
                             Run TF-IDF
                         </button>
@@ -145,7 +155,7 @@ class TfidfViz extends Component  {
 
     renderResult()  {
         let docEditors = this.state.docs.map((doc, key) =>
-            <DocumentResult/>
+            <DocumentResult document={doc}/>
         );
         return (
             <div className="container-fluid h-100">
@@ -157,8 +167,9 @@ class TfidfViz extends Component  {
                     </div>
                     <div className="col-9 h-100">
                         <button type="button"
+                                onClick={this.returnToEditMode}
                                 className="btn btn-primary m-2">
-                            Run TF-IDF
+                            Edit
                         </button>
                         {docEditors}
                         <button type="button"
@@ -171,10 +182,10 @@ class TfidfViz extends Component  {
     }
 
     render()  {
-        if (this.state.renderEdit)  {
+        if (this.state.isEdit)  {
             return this.renderEdit();
         } else {
-            return this.renderEdit();
+            return this.renderResult();
         }
     }
 
