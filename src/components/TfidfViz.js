@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import TfidfService from '../services/TfidfService'
+
 import DocumentEditor from './DocumentEditor'
 import DocumentResult from './DocumentResult'
 
@@ -8,6 +10,8 @@ import '../style/TfidfViz.css';
 class TfidfViz extends Component  {
     constructor(props)  {
         super(props);
+
+        this.tfidfService = new TfidfService();
 
         this.changeContent = this.changeContent.bind(this);
         this.newEditDocument = this.newEditDocument.bind(this);
@@ -39,7 +43,6 @@ class TfidfViz extends Component  {
     deleteDocument(index)  {
         let newDocs = this.state.docs;
         newDocs.splice(index, 1);
-        console.log(newDocs);
         this.setState({
             docs: newDocs,
             isEdit: this.state.isEdit
@@ -56,66 +59,11 @@ class TfidfViz extends Component  {
     }
 
     runTfidf()  {
-        let newDocs = [{
-                content: "Boston is a cool city.",
-                wordScores: [{
-                    name: "Boston",
-                    score: 0.123
-                },{
-                    name: "is",
-                    score: 0.199
-                },{
-                    name: "a",
-                    score: 0.423
-                },{
-                    name: "cool",
-                    score: 0.223
-                },{
-                    name: "city",
-                    score: 0.923
-                }]
-            },{
-            content: "I like the city.",
-            wordScores: [{
-                name: "I",
-                score: 0.123
-            },{
-                name: "like",
-                score: 0.199
-            },{
-                name: "the",
-                score: 0.423
-            },{
-                name: "city",
-                score: 0.923
-            }]
-        },{
-            content: "New York is a city.",
-            wordScores: [{
-                name: "New",
-                score: 0.123
-            },{
-                name: "York",
-                score: 0.223
-            },{
-                name: "is",
-                score: 0.199
-            },{
-                name: "a",
-                score: 0.423
-            },{
-                name: "city",
-                score: 0.923
-            }]
-        }];
-        this.setState({
-            docs: newDocs,
-            isEdit: false
-        });
+        this.tfidfService.getTfidfResult(this.state.docs)
+            .then(docs => this.setState({ docs: docs, isEdit: false }));
     }
 
     returnToEditMode()  {
-        console.log("RETURNING TO EDIT MODE");
         this.setState({
             docs: this.state.docs,
             isEdit: true
