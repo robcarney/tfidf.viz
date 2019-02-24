@@ -24,7 +24,7 @@ class DocumentResult extends Component  {
                     contentList.push({
                         word: currWord,
                         isSplitter: false,
-                        value: 0.1
+                        value: this.getWordScoreForWord(currWord).valueNormalized
                     });
                     currWord = currLetter;
                     isSplitter = true;
@@ -33,7 +33,7 @@ class DocumentResult extends Component  {
                     contentList.push({
                         word: currWord,
                         isSplitter: true,
-                        value: 0.1
+                        value: 0.0
                     });
                 }
             } else {
@@ -41,7 +41,7 @@ class DocumentResult extends Component  {
                     contentList.push({
                         word: currWord,
                         isSplitter: true,
-                        value: 0.1
+                        value: 0.0
                     });
                     currWord = currLetter;
                     isSplitter = false;
@@ -52,7 +52,7 @@ class DocumentResult extends Component  {
                     contentList.push({
                         word: currWord,
                         isSplitter: false,
-                        value: 0.1
+                        value: this.getWordScoreForWord(currWord).valueNormalized
                     });
                 }
             }
@@ -70,9 +70,25 @@ class DocumentResult extends Component  {
         });
     }
 
-    getBackgroundColorStyleObject(scale)  {
+    // Retrieves the word score object corresponding to the given word
+    getWordScoreForWord(word)  {
+        for (let i = 0; i < this.props.document.wordScores.length; i++)  {
+            let currWordScore = this.props.document.wordScores[i];
+            if (word.toLowerCase() === currWordScore.name)  {
+                return currWordScore
+            }
+        }
         return {
-            backgroundColor: '#902020'
+            name: word.toLowerCase(),
+            value: 0.,
+            valueNormalized: 0.
+        }
+    }
+
+    getBackgroundColorStyleObject(scale)  {
+        scale = (0.7 * scale) + .3;
+        return {
+            backgroundColor: 'rgba(255, 99, 71, ' + scale + ')'
         }
     }
 

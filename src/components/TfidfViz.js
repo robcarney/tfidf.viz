@@ -24,7 +24,9 @@ class TfidfViz extends Component  {
 
         this.state = {
             docs: [
-                {content: "Some content"}
+                {content: "Some content"},
+                {content: "More content about different things"},
+                {content: "Things about tfidf"}
             ],
             isEdit: true
         }
