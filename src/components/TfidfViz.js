@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import TfidfService from '../services/TfidfService'
 
+import TfidfVizSidebar from './TfidfVizSidebar'
 import DocumentEditor from './DocumentEditor'
 import DocumentResult from './DocumentResult'
 
@@ -82,11 +83,7 @@ class TfidfViz extends Component  {
         return (
             <div className="container-fluid h-100">
                 <div className="row main-row h-100">
-                    <div className="col-3 sidebar no-float h-100">
-                        <div className="">
-                            <h1>Tfidf.Viz</h1>
-                        </div>
-                    </div>
+                    <TfidfVizSidebar/>
                     <div className="col-9 h-100">
                         <button type="button"
                                 onClick={this.runTfidf}
@@ -110,11 +107,7 @@ class TfidfViz extends Component  {
         return (
             <div className="container-fluid h-100">
                 <div className="row main-row h-100">
-                    <div className="col-3 sidebar no-float h-100">
-                        <div className="">
-                            <h1>Tfidf.Viz</h1>
-                        </div>
-                    </div>
+                    <TfidfVizSidebar/>
                     <div className="col-9 h-100">
                         <button type="button"
                                 onClick={this.returnToEditMode}
