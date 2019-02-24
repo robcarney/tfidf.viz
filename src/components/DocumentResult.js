@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import WordVisualization from './WordVisualization';
+import SplitterVisualization from './SplitterVizualization'
+
 import '../style/DocumentResult.css';
 
 class DocumentResult extends Component  {
@@ -21,10 +24,12 @@ class DocumentResult extends Component  {
                 if (isSplitter)  {
                     currWord = currWord + currLetter;
                 } else {
+                    let currWordScore = this.getWordScoreForWord(currWord);
                     contentList.push({
                         word: currWord,
                         isSplitter: false,
-                        value: this.getWordScoreForWord(currWord).valueNormalized
+                        value: currWordScore.value,
+                        valueNormalized: currWordScore.valueNormalized
                     });
                     currWord = currLetter;
                     isSplitter = true;
@@ -32,16 +37,14 @@ class DocumentResult extends Component  {
                 if (i === doc.content.length - 1)  {
                     contentList.push({
                         word: currWord,
-                        isSplitter: true,
-                        value: 0.0
+                        isSplitter: true
                     });
                 }
             } else {
                 if (isSplitter)  {
                     contentList.push({
                         word: currWord,
-                        isSplitter: true,
-                        value: 0.0
+                        isSplitter: true
                     });
                     currWord = currLetter;
                     isSplitter = false;
@@ -49,10 +52,12 @@ class DocumentResult extends Component  {
                     currWord = currWord + currLetter;
                 }
                 if (i === doc.content.length - 1)  {
+                    let currWordScore = this.getWordScoreForWord(currWord);
                     contentList.push({
                         word: currWord,
                         isSplitter: false,
-                        value: this.getWordScoreForWord(currWord).valueNormalized
+                        value: currWordScore.value,
+                        valueNormalized: currWordScore.valueNormalized
                     });
                 }
             }
@@ -60,11 +65,13 @@ class DocumentResult extends Component  {
         return contentList.map(contentEntry => {
             if (contentEntry.isSplitter)  {
                 return (
-                    <span>{contentEntry.word}</span>
+                    <SplitterVisualization content={contentEntry.word}/>
                 )
             } else {
                 return (
-                    <span style={this.getBackgroundColorStyleObject(contentEntry.value)}>{contentEntry.word}</span>
+                    <WordVisualization word={contentEntry.word}
+                                       value={contentEntry.value}
+                                       valueNormalized={contentEntry.valueNormalized}/>
                 )
             }
         });
