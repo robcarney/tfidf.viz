@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 
-import TfidfService from '../services/TfidfService'
-
 import TfidfVizSidebar from './TfidfVizSidebar'
-import DocumentEditor from './DocumentEditor'
-import DocumentResult from './DocumentResult'
+import DocumentList from './DocumentList'
 
 import '../style/TfidfViz.css';
 
@@ -12,125 +9,18 @@ class TfidfViz extends Component  {
     constructor(props)  {
         super(props);
 
-        this.tfidfService = new TfidfService();
-
-        this.changeContent = this.changeContent.bind(this);
-        this.newEditDocument = this.newEditDocument.bind(this);
-        this.deleteDocument = this.deleteDocument.bind(this);
-
-        this.runTfidf = this.runTfidf.bind(this);
-        this.returnToEditMode = this.returnToEditMode.bind(this);
-
-        this.renderEdit = this.renderEdit.bind(this);
-
-        this.state = {
-            docs: [
-                {content: "Some content"},
-                {content: "More content about different things"},
-                {content: "Things about tfidf"}
-            ],
-            isEdit: true
-        }
-
-    }
-
-    newEditDocument()  {
-        let newDocs = this.state.docs;
-        newDocs.push({content: ""});
-        this.setState({
-            docs: newDocs,
-            isEdit: this.state.isEdit
-        });
-    }
-
-    deleteDocument(index)  {
-        let newDocs = this.state.docs;
-        newDocs.splice(index, 1);
-        this.setState({
-            docs: newDocs,
-            isEdit: this.state.isEdit
-        })
-    }
-
-    changeContent(index, newContent)  {
-        let newDocs = this.state.docs;
-        newDocs[index] = { content: newContent };
-        this.setState({
-            docs: newDocs,
-            isEdit: this.state.isEdit
-        });
-    }
-
-    runTfidf()  {
-        this.tfidfService.getTfidfResult(this.state.docs)
-            .then(docs => this.setState({ docs: docs, isEdit: false }));
-    }
-
-    returnToEditMode()  {
-        this.setState({
-            docs: this.state.docs,
-            isEdit: true
-        });
-    }
-
-    renderEdit()  {
-        let docEditors = this.state.docs.map((doc, key) =>
-            <DocumentEditor content={doc.content}
-                            index={key}
-                            onDelete={this.deleteDocument}
-                            onEdit={this.changeContent}/>
-        );
-        return (
-            <div className="container-fluid h-100">
-                <div className="row main-row h-100">
-                    <TfidfVizSidebar/>
-                    <div className="col-9 h-100">
-                        <button type="button"
-                                onClick={this.runTfidf}
-                                className="btn btn-primary m-2">
-                            Run TF-IDF
-                        </button>
-                        {docEditors}
-                        <button type="button"
-                                onClick={this.newEditDocument}
-                                className="btn btn-block btn-success">New</button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    renderResult()  {
-        let docEditors = this.state.docs.map((doc, key) =>
-            <DocumentResult document={doc} index={key}/>
-        );
-        return (
-            <div className="container-fluid h-100">
-                <div className="row main-row h-100">
-                    <TfidfVizSidebar/>
-                    <div className="col-9 h-100">
-                        <button type="button"
-                                onClick={this.returnToEditMode}
-                                className="btn btn-primary m-2">
-                            Edit
-                        </button>
-                        {docEditors}
-                    </div>
-                </div>
-            </div>
-        );
     }
 
     render()  {
-        if (this.state.isEdit)  {
-            return this.renderEdit();
-        } else {
-            return this.renderResult();
-        }
+        return (
+            <div className="container-fluid h-100">
+                <div className="row main-row h-100">
+                    <TfidfVizSidebar />
+                    <DocumentList />
+                </div>
+            </div>
+        );
     }
-
-
-
 }
 
 export default TfidfViz;
