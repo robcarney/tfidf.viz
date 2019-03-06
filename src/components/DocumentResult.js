@@ -92,14 +92,6 @@ class DocumentResult extends Component  {
         }
     }
 
-    getBackgroundColorStyleObject(scale)  {
-        scale = (0.7 * scale) + .3;
-        return {
-            backgroundColor: 'rgba(255, 99, 71, ' + scale + ')'
-        }
-    }
-
-
     render()  {
         let content = this.getContent();
         return (
