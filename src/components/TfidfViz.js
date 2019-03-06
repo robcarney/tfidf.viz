@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 
-import TfidfService from '../services/TfidfService'
-
 import TfidfVizSidebar from './TfidfVizSidebar'
-import DocumentEditor from './DocumentEditor'
-import DocumentResult from './DocumentResult'
 import DocumentList from './DocumentList'
 
 import '../style/TfidfViz.css';
