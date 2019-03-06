@@ -12,7 +12,10 @@ const WordVisualization = ({word, value, valueNormalized}) => {
             borderRadius: 3
         }}>{ Math.round(value * 1000) / 1000 }</div>
     );
-    const content = <span style={getBackgroundColorStyleObject(valueNormalized)}>{word}</span>;
+    const content =
+        <span className="word-result" style={getBackgroundColorStyleObject(valueNormalized)}>
+            {word}
+        </span>;
     return (
         <OverlayTrigger placement="top" overlay={renderToolTip()}>
             {content}

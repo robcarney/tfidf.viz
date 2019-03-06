@@ -6,3 +6,8 @@
     padding: 1rem;
     font-size: 150%;
 }
+
+.word-result  {
+    cursor: default;
+}
+
