@@ -3,6 +3,14 @@
     color: #fff;
 }
 
+.sidebar-content {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+}
+
 html,body {
     height:100%;
 }
