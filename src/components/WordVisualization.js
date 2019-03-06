@@ -4,20 +4,17 @@ import { OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
 
 const WordVisualization = ({word, value, valueNormalized}) => {
-    const renderToolTip = () => (
-        <div style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            padding: '2px 10px',
-            color: 'white',
-            borderRadius: 3
-        }}>{ Math.round(value * 1000) / 1000 }</div>
-    );
+    const popover = (
+        <Popover id="wordResultPopover" title={word}>
+            { Math.round(value * 1000000) / 1000000 }
+        </Popover>
+    )
     const content =
         <span className="word-result" style={getBackgroundColorStyleObject(valueNormalized)}>
             {word}
         </span>;
     return (
-        <OverlayTrigger placement="top" overlay={renderToolTip()}>
+        <OverlayTrigger placement="top" overlay={popover}>
             {content}
         </OverlayTrigger>
     );

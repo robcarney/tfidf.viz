@@ -5,6 +5,18 @@ import DocumentEditor from './DocumentEditor'
 import DocumentResult from './DocumentResult'
 import TfidfVizSidebar from "./TfidfViz";
 
+
+const EXAMPLE_DOC_1 = "First, I want to say to all of you that, as you might imagine, I have been on quite a " +
+    "journey these last few weeks to get to the end of this, to the rock bottom truth of where " +
+    "I am and where we all are.";
+const EXAMPLE_DOC_2 = "It is important to me that everybody who has been hurt know that the sorrow I feel is " +
+    "genuine: first and most important, my family; also my friends, my staff, my Cabinet, Monica Lewinsky and " +
+    "her family, and the American people. I have asked all for their forgiveness.";
+const EXAMPLE_DOC_3 = "Now, what does all this mean for me and for us? First, I will instruct my lawyers to mount " +
+    "a vigorous defense, using all available appropriate arguments. But legal language must not obscure the fact " +
+    "that I have done wrong. Second, I will continue on the path of repentance, seeking pastoral support and that " +
+    "of other caring people so that they can hold me accountable for my own commitment.";
+
 class DocumentList extends Component  {
     constructor(props)  {
         super(props);
@@ -22,9 +34,9 @@ class DocumentList extends Component  {
 
         this.state = {
             docs: [
-                {content: "Some content"},
-                {content: "More content about different things"},
-                {content: "Things about tfidf"}
+                {content: EXAMPLE_DOC_1},
+                {content: EXAMPLE_DOC_2},
+                {content: EXAMPLE_DOC_3}
             ],
             isEdit: true
         }
