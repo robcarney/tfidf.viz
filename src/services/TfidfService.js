@@ -13,8 +13,7 @@ export default class TfidfService  {
                     "Content-Type": "application/json"
                 },
                 mode: 'cors'
-            }).then(response => response.json().then(this.responseToDocs))
-            .catch(error => alert(error))
+            }).then(response => response.json().then(this.responseToDocs));
     }
 
     // Converts the JSON response from TFIDF_API_URL to an array of doc objects

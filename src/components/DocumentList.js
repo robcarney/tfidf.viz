@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import TfidfService from '../services/TfidfService'
+import {Modal} from 'react-bootstrap';
 
-import DocumentEditor from './DocumentEditor'
-import DocumentResult from './DocumentResult'
-import TfidfVizSidebar from "./TfidfViz";
+import DocumentEditor from './DocumentEditor';
+import DocumentResult from './DocumentResult';
+
+import TfidfService from '../services/TfidfService'
 
 
 const EXAMPLE_DOC_1 = "First, I want to say to all of you that, as you might imagine, I have been on quite a " +
@@ -28,6 +29,8 @@ class DocumentList extends Component  {
         this.deleteDocument = this.deleteDocument.bind(this);
 
         this.runTfidf = this.runTfidf.bind(this);
+        this.showErrorModal = this.showErrorModal.bind(this);
+        this.hideErrorModal = this.hideErrorModal.bind(this);
         this.returnToEditMode = this.returnToEditMode.bind(this);
 
         this.renderEdit = this.renderEdit.bind(this);
@@ -38,9 +41,9 @@ class DocumentList extends Component  {
                 {content: EXAMPLE_DOC_2},
                 {content: EXAMPLE_DOC_3}
             ],
-            isEdit: true
+            isEdit: true,
+            showErrorModal: false
         }
-
     }
 
     newEditDocument()  {
@@ -72,7 +75,24 @@ class DocumentList extends Component  {
 
     runTfidf()  {
         this.tfidfService.getTfidfResult(this.state.docs)
-            .then(docs => this.setState({ docs: docs, isEdit: false }));
+            .then(docs => this.setState({ docs: docs, isEdit: false }))
+            .catch(err => this.showErrorModal());
+    }
+
+    showErrorModal()  {
+        this.setState({
+            docs: this.state.docs,
+            isEdit: this.state.isEdit,
+            showErrorModal: true
+        })
+    }
+
+    hideErrorModal()  {
+        this.setState({
+            docs: this.state.docs,
+            isEdit: this.state.isEdit,
+            showErrorModal: false
+        })
     }
 
     returnToEditMode()  {
@@ -100,6 +120,16 @@ class DocumentList extends Component  {
                 <button type="button"
                         onClick={this.newEditDocument}
                         className="btn btn-block btn-success">New</button>
+                <Modal show={this.state.showErrorModal} onHide={this.hideErrorModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Oops, something went wrong...</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Something went wrong when running the TF-IDF algorithm.
+                        If you <a href="https://github.com/robcarney/tfidf.viz/issues">report the issue on GitHub</a>,
+                        we can take a look.
+                    </Modal.Body>
+                </Modal>
             </div>
         );
     }
