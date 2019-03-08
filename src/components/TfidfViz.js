@@ -5,11 +5,11 @@ import DocumentList from './DocumentList'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faGithubAlt, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
 import '../style/TfidfViz.css';
 
-library.add(faGithub, faGithubAlt, faGithubSquare);
+library.add(faGithub, faGithubAlt);
 
 class TfidfViz extends Component  {
     constructor(props)  {
