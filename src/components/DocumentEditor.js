@@ -16,6 +16,7 @@ const DocumentEditor = ({index, content, onDelete, onEdit, deleteDisabled}) =>
                 <div className="form-group">
                     <textarea className="form-control doc-editor-text-area"
                               rows="5"
+                              maxLength="1000"
                               value={content}
                               onChange={(e) => onEdit(index, e.target.value)}>
                     </textarea>
