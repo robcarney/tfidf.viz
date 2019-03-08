@@ -1,10 +1,13 @@
 .document-result-content  {
     color: gray;
-    margin: 0.5rem;
     border: 1px solid dimgray;
     border-radius: 5px;
     padding: 1rem;
     font-size: 150%;
+}
+
+.document-result-title  {
+    margin-left: 1rem;
 }
 
 .word-result  {

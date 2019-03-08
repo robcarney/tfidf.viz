@@ -1,4 +1,4 @@
-const TFIDF_API_URL = "http://localhost:3000/tfidf";
+const TFIDF_API_URL = "https://2rgo0j8asb.execute-api.us-east-2.amazonaws.com/prod/";
 
 
 export default class TfidfService  {

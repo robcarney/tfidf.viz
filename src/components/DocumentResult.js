@@ -10,7 +10,7 @@ const DocumentResult = ({document, index}) => {
     const content = getContentListFromDocument(document).map(contentEntryToComponent);
     return (
         <div className="document-result">
-            <h3>{"Document #" + (index + 1)}</h3>
+            <h3 className="document-result-title">{"Document #" + (index + 1)}</h3>
             <div className="document-result-content">
                 {content}
             </div>
