@@ -106,6 +106,7 @@ class DocumentList extends Component  {
         let docEditors = this.state.docs.map((doc, key) =>
             <DocumentEditor content={doc.content}
                             index={key}
+                            deleteDisabled={this.state.docs.length <= 2}
                             onDelete={this.deleteDocument}
                             onEdit={this.changeContent}/>
         );
