@@ -111,7 +111,7 @@ class DocumentList extends Component  {
                             onEdit={this.changeContent}/>
         );
         return (
-            <div className="col-9 h-100">
+            <div className="document-list h-100">
                 <button type="button"
                         onClick={this.runTfidf}
                         className="btn btn-primary m-2">
@@ -140,7 +140,7 @@ class DocumentList extends Component  {
             <DocumentResult document={doc} index={key}/>
         );
         return (
-            <div className="col-9 h-100">
+            <div className="document-list h-100">
                 <button type="button"
                         onClick={this.returnToEditMode}
                         className="btn btn-primary m-2">

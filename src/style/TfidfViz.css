@@ -1,6 +1,10 @@
 .sidebar {
     background: #7386D5;
     color: #fff;
+    position: fixed;
+    width: 260px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .sidebar-content {
@@ -17,6 +21,12 @@
     bottom: 5%;
     width: 100%;
     text-align: center;
+}
+
+.document-list  {
+    width: calc(100% - 280px);
+    margin-left: 270px;
+    margin-right: 10px;
 }
 
 .github-link {
