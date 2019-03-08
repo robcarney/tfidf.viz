@@ -1,6 +1,10 @@
-# tfidf.viz
-Visualization for TF-IDF
+# Tfidf.Viz
+Tfidf.Viz is a visualization tool for the [TF-IDF Algorithm](https://en.wikipedia.org/wiki/Tf–idf "TF-IDF Wiki"). You can try it out [here](tfidfviz.com)!
 
-## IDEAS
-* http://bl.ocks.org/mmattozzi/7018021
-* for highlighting: http://api.jqueryui.com/highlight-effect/
+## How it works...
+
+
+## The code
+The front end of the app is build with React, and it makes use of a simple API I set up using AWS Lambda on the backend. Feel free to explore the code!
+
+
