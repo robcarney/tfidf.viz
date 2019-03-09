@@ -131,7 +131,7 @@ class DocumentList extends Component  {
                 <button type="button"
                         onClick={this.runExample}
                         className="btn btn-secondary">
-                    Check out and example...
+                    Check out an example...
                 </button>
                 {docEditors}
                 <button type="button"
