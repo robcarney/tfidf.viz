@@ -7,16 +7,14 @@ import DocumentResult from './DocumentResult';
 import TfidfService from '../services/TfidfService'
 
 
-const EXAMPLE_DOC_1 = "First, I want to say to all of you that, as you might imagine, I have been on quite a " +
-    "journey these last few weeks to get to the end of this, to the rock bottom truth of where " +
-    "I am and where we all are.";
-const EXAMPLE_DOC_2 = "It is important to me that everybody who has been hurt know that the sorrow I feel is " +
-    "genuine: first and most important, my family; also my friends, my staff, my Cabinet, Monica Lewinsky and " +
-    "her family, and the American people. I have asked all for their forgiveness.";
-const EXAMPLE_DOC_3 = "Now, what does all this mean for me and for us? First, I will instruct my lawyers to mount " +
-    "a vigorous defense, using all available appropriate arguments. But legal language must not obscure the fact " +
-    "that I have done wrong. Second, I will continue on the path of repentance, seeking pastoral support and that " +
-    "of other caring people so that they can hold me accountable for my own commitment.";
+const EXAMPLE_DOC_1 = "Here we are going to talk about Alice. Alice is a person. We are talking about Alice a lot," +
+    " so Alice should get a pretty high score, higher than John or George. You can hover over the word Alice to see " +
+    "the score that Alice got.";
+const EXAMPLE_DOC_2 = "Here we're talking about John. His score will not be as high, since we are not saying much " +
+    "about him.";
+const EXAMPLE_DOC_3 = "Now let's talk about George. George is also a person. George likes pizza. We have talked a " +
+    "lot about George, so he should also get a pretty high score, but less high since he was mentioned in the " +
+    "first document too.";
 
 class DocumentList extends Component  {
     constructor(props)  {
@@ -29,6 +27,7 @@ class DocumentList extends Component  {
         this.deleteDocument = this.deleteDocument.bind(this);
 
         this.runTfidf = this.runTfidf.bind(this);
+        this.runExample = this.runExample.bind(this);
         this.showErrorModal = this.showErrorModal.bind(this);
         this.hideErrorModal = this.hideErrorModal.bind(this);
         this.returnToEditMode = this.returnToEditMode.bind(this);
@@ -37,9 +36,8 @@ class DocumentList extends Component  {
 
         this.state = {
             docs: [
-                {content: EXAMPLE_DOC_1},
-                {content: EXAMPLE_DOC_2},
-                {content: EXAMPLE_DOC_3}
+                {content: ""},
+                {content: ""}
             ],
             isEdit: true,
             showErrorModal: false
@@ -79,6 +77,19 @@ class DocumentList extends Component  {
             .catch(err => this.showErrorModal());
     }
 
+    runExample()  {
+        this.setState({
+            docs: [
+                {content: EXAMPLE_DOC_1},
+                {content: EXAMPLE_DOC_2},
+                {content: EXAMPLE_DOC_3}
+            ],
+            isEdit: true,
+            showErrorModal: false
+        });
+        this.runTfidf();
+    }
+
     showErrorModal()  {
         this.setState({
             docs: this.state.docs,
@@ -116,6 +127,11 @@ class DocumentList extends Component  {
                         onClick={this.runTfidf}
                         className="btn btn-primary m-2">
                     Run TF-IDF
+                </button>
+                <button type="button"
+                        onClick={this.runExample}
+                        className="btn btn-secondary">
+                    Check out and example...
                 </button>
                 {docEditors}
                 <button type="button"
