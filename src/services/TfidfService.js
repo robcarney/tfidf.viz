@@ -54,7 +54,6 @@ export default class TfidfService  {
                 docs[i].wordScores[j].valueNormalized = docs[i].wordScores[j].value / max;
             }
         }
-        console.log(docs);
         return docs;
     }
 

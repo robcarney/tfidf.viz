@@ -78,16 +78,13 @@ class DocumentList extends Component  {
     }
 
     runExample()  {
-        this.setState({
-            docs: [
-                {content: EXAMPLE_DOC_1},
-                {content: EXAMPLE_DOC_2},
-                {content: EXAMPLE_DOC_3}
-            ],
-            isEdit: true,
-            showErrorModal: false
-        });
-        this.runTfidf();
+        this.tfidfService.getTfidfResult([
+            { content: EXAMPLE_DOC_1 },
+            { content: EXAMPLE_DOC_2 },
+            { content: EXAMPLE_DOC_3 }
+        ])
+            .then(docs => this.setState({ docs: docs, isEdit: false }))
+            .catch(err => this.showErrorModal());
     }
 
     showErrorModal()  {
