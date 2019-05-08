@@ -1,5 +1,5 @@
 # Tfidf.Viz
-Tfidf.Viz is a visualization tool for the [TF-IDF Algorithm](https://en.wikipedia.org/wiki/Tf–idf "TF-IDF Wiki"). You can try it out [here](tfidfviz.com)!
+Tfidf.Viz is a visualization tool for the [TF-IDF Algorithm](https://en.wikipedia.org/wiki/Tf–idf "TF-IDF Wiki"). You can try it out [here](https://tfidfviz.com)!
 
 ## How it works...
 To use the tool, first add some documents to be analyzed.
