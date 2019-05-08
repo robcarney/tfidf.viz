@@ -8,7 +8,7 @@ To use the tool, first add some documents to be analyzed.
 Then, press "Run TF-IDF" to run the algorithm on the documents to be added. You should get something that looks like this, where the words with the darker background are considered more relevant and those with the lighter background are considered less relevant:
 ![Result](/images/result-sample.png "Result")
 
-You can also hover over specific words to see what their actual score is (note that these scores may round down to 0 for particularly low values). Below, we can see that the word "markets" has a score of 0.012628.
+You can also hover over specific words to see what their actual score is (note that these scores may round down to 0 for particularly low values). Below, we can see that the word "Alice" has a score of 0.143297.
 ![Popover](/images/popover-sample.png "Popover")
 
 
